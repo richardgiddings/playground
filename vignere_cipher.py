@@ -13,20 +13,20 @@ def repeat_to_length(s, wanted):
 
 def encode(text, key):
     text_list = list(text)
-    key_list = repeat_to_length(key, len(text_list))
+    key_repeated = repeat_to_length(key, len(text_list))
     
     for i in range(len(text_list)):
-        text_list[i] = chr((( (ord(text_list[i]) - 32) + ord(key_list[i]) ) % 127) + 32)
+        text_list[i] = chr((( (ord(text_list[i]) - 32) + ord(key_repeated[i]) ) % 127) + 32)
 
     return ''.join(text_list)
 
 
 def decode(text, key):
     text_list = list(text)
-    key_list = repeat_to_length(key, len(text_list))
+    key_repeated = repeat_to_length(key, len(text_list))
     
     for i in range(len(text_list)):
-        text_list[i] = chr((( (ord(text_list[i]) - 32) - ord(key_list[i]) ) % 127) + 32)
+        text_list[i] = chr((( (ord(text_list[i]) - 32) - ord(key_repeated[i]) ) % 127) + 32)
 
     return ''.join(text_list)
 
